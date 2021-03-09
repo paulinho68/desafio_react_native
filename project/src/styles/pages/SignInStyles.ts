@@ -24,7 +24,8 @@ export const Content = styled.View`
 `;
 
 export const ContentInputs = styled.View`
-    margin-bottom: 60px;
+    margin-bottom: 30px;
+    width:100%;
 `;
 
 export const RegularText = styled.Text`
