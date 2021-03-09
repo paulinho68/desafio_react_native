@@ -14,7 +14,7 @@ export const Container = styled.View`
 
 export const Line = styled.View`
     width:100%;
-    height: 2px;
+    height: 1.5px;
     background-color:#EFEFF3;
 `;
 
