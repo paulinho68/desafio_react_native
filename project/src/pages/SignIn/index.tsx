@@ -1,26 +1,29 @@
 import React, { useCallback, useRef } from 'react';
 import { KeyboardAvoidingView, Platform, ScrollView, TextInput } from 'react-native';
-import * as Styles from '../../styles/pages/SignInStyles';
+import { useNavigation } from '@react-navigation/native';
 
-import * as Yup from 'yup';
+import * as Styles from '../../styles/pages/SignInStyles';
+import getValidationErrors from '../../utils/getValidationErrors';
 
 import Title from '../../assets/title.png';
 import GooglePng from '../../assets/google.png';
 
 import { Form } from '@unform/mobile';
 import { FormHandles } from '@unform/core';
+import * as Yup from 'yup';
 
 import Badge from '../../components/atoms/Badge';
 import Button from '../../components/atoms/Button';
 import Input from '../../components/atoms/Input';
 
-import getValidationErrors from '../../utils/getValidationErrors';
 interface SignInFormData {
     email: string;
     password: string;
 }
 
 const SignIn: React.FC = () => {
+    const navigation = useNavigation();
+
     const formRef = useRef<FormHandles>(null);
     const passwordRef = useRef<TextInput>(null);
 
@@ -39,7 +42,7 @@ const SignIn: React.FC = () => {
                 abortEarly: false,
             });
 
-            // success
+            navigation.navigate('Home');
 
         } catch (err) {
             if (err instanceof Yup.ValidationError) {
