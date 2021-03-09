@@ -56,7 +56,6 @@ const Input: React.ForwardRefRenderFunction<InputRef, InputProps> = ({ name, ico
         setIsFocused(false);
     }, []);
 
-    console.log(error);
     return (
         <>
             <Styles.Container isFocused={isFocused} isErrored={!!error}>

@@ -11,6 +11,7 @@ import GooglePng from '../../assets/google.png';
 import { Form } from '@unform/mobile';
 import { FormHandles } from '@unform/core';
 import * as Yup from 'yup';
+import firebase from '@react-native-firebase/auth';
 
 import Badge from '../../components/atoms/Badge';
 import Button from '../../components/atoms/Button';
@@ -42,7 +43,17 @@ const SignIn: React.FC = () => {
                 abortEarly: false,
             });
 
-            navigation.navigate('Home');
+            try {
+                const user = await firebase()
+                    .signInWithEmailAndPassword(
+                        data.email,
+                        data.password
+                    );
+                console.log(user);
+                navigation.navigate('Home');
+            } catch (error) {
+                console.log(error);
+            }
 
         } catch (err) {
             if (err instanceof Yup.ValidationError) {
