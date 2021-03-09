@@ -8,7 +8,7 @@ export const Container = styled.View`
 `;
 
 export const Image = styled.Image`
-    margin-bottom: 60px;
+    margin-bottom: 30px;
     width: 210px;
     height: 96px;
 `;

@@ -1,5 +1,5 @@
 import React, { useCallback, useRef } from 'react';
-import { KeyboardAvoidingView, Platform, ScrollView, TextInput, Alert } from 'react-native';
+import { KeyboardAvoidingView, Platform, ScrollView, TextInput } from 'react-native';
 import * as Styles from '../../styles/pages/SignInStyles';
 
 import * as Yup from 'yup';
@@ -39,10 +39,7 @@ const SignIn: React.FC = () => {
                 abortEarly: false,
             });
 
-            Alert.alert(
-                'Erro na autenticação',
-                'Ocorreu um erro ao fazer login, cheque suas credenciais'
-            );
+            // success
 
         } catch (err) {
             if (err instanceof Yup.ValidationError) {

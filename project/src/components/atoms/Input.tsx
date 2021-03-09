@@ -56,36 +56,44 @@ const Input: React.ForwardRefRenderFunction<InputRef, InputProps> = ({ name, ico
         setIsFocused(false);
     }, []);
 
+    console.log(error);
     return (
-        <Styles.Container isFocused={isFocused} isErrored={!!error}>
-            <Styles.Icon
-                size={16}
-                name={icon}
-                isErrored={!!error}
-                isFocused={isFocused}
-            />
-            <Styles.TextInput
-                ref={inputElementRef}
-                placeholderTextColor="#515151"
-                defaultValue={defaultValue}
-                onFocus={handleInputFocus}
-                onBlur={handleInputBlur}
-                onChangeText={(value: string) => {
-                    inputValueRef.current.value = value;
-                }}
-                {...rest}
-                secureTextEntry={name == 'password' ? !isVisible : false}
-            />
-            {name == 'password' && (
-                <TouchableOpacity onPress={() => setIsVisible(!isVisible)} style={{ paddingLeft: 10 }}>
-                    <Styles.Icon
-                        size={16}
-                        name={isVisible ? 'eye-off' : 'eye'}
-                        marginRight={'0'}
-                    />
-                </TouchableOpacity>
+        <>
+            <Styles.Container isFocused={isFocused} isErrored={!!error}>
+                <Styles.Icon
+                    size={21}
+                    name={icon}
+                    isErrored={!!error}
+                    isFocused={isFocused}
+                />
+                <Styles.TextInput
+                    ref={inputElementRef}
+                    placeholderTextColor="#515151"
+                    defaultValue={defaultValue}
+                    onFocus={handleInputFocus}
+                    onBlur={handleInputBlur}
+                    onChangeText={(value: string) => {
+                        inputValueRef.current.value = value;
+                    }}
+                    {...rest}
+                    secureTextEntry={name == 'password' ? !isVisible : false}
+                />
+                {name == 'password' && (
+                    <TouchableOpacity onPress={() => setIsVisible(!isVisible)} style={{ paddingLeft: 10 }}>
+                        <Styles.Icon
+                            size={21}
+                            name={isVisible ? 'eye-off' : 'eye'}
+                            marginRight={'0'}
+                        />
+                    </TouchableOpacity>
+                )}
+            </Styles.Container>
+            {!!error && (
+                <Styles.TextError>
+                    {error}
+                </Styles.TextError>
             )}
-        </Styles.Container>
+        </>
     )
 }
 

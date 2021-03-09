@@ -1,6 +1,5 @@
 import styled from 'styled-components/native';
 import FeatherIcon from 'react-native-vector-icons/Feather';
-import { css } from 'styled-components';
 
 interface IconProps {
     marginRight?: string;
@@ -16,8 +15,7 @@ interface ContainerProps {
 export const Container = styled.View`
     width: 100%;
     height: 40px;
-
-    margin-bottom:30px;
+    margin-top:30px;
     padding: 4px;
 
     display: flex;
@@ -36,6 +34,14 @@ export const TextInput = styled.TextInput`
     flex:1;
     font-family: 'OpenSans-Regular';
     padding: 4px;
+    font-size: 14px;
+`;
+
+export const TextError = styled.Text`
+    font-family: 'OpenSans-Regular';
+    font-size: 12px;
+    color: #FE0606;
+    margin-top:9px;
 `;
 
 export const Icon = styled(FeatherIcon)`
