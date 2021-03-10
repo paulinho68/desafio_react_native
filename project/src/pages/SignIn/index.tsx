@@ -10,12 +10,15 @@ import GooglePng from '../../assets/google.png';
 
 import { Form } from '@unform/mobile';
 import { FormHandles } from '@unform/core';
+import { showMessage } from 'react-native-flash-message';
 import * as Yup from 'yup';
 import firebase from '@react-native-firebase/auth';
 
 import Badge from '../../components/atoms/Badge';
 import Button from '../../components/atoms/Button';
 import Input from '../../components/atoms/Input';
+
+import UserStore from '../../stores/user';
 
 interface SignInFormData {
     email: string;
@@ -49,10 +52,24 @@ const SignIn: React.FC = () => {
                         data.email,
                         data.password
                     );
-                console.log(user);
+
+                await UserStore.setUser({
+                    email: user.user.email,
+                    displayName: user.user.displayName
+                });
+
                 navigation.navigate('Home');
             } catch (error) {
-                console.log(error);
+                console.log(error.message);
+                showMessage({
+                    message: 'Erro!',
+                    description: error.message,
+                    type: 'danger',
+                    // floating: true,
+                    // style: { marginTop: 25 },
+                    titleStyle: { fontWeight: 'bold' },
+                    icon: 'danger',
+                });
             }
 
         } catch (err) {
@@ -61,8 +78,6 @@ const SignIn: React.FC = () => {
                 console.log(errors);
                 formRef.current?.setErrors(errors);
             }
-
-            // addToast();
         }
     }, []);
 
