@@ -32,6 +32,9 @@ const SignIn: React.FC = () => {
     const passwordRef = useRef<TextInput>(null);
 
     const handleSignIn = useCallback(async (data: SignInFormData) => {
+        navigation.navigate('Home');
+        return;
+        
         try {
             formRef.current?.setErrors({});
 
