@@ -33,6 +33,8 @@ local.properties
 #
 .vscode/
 
+android/app/google-services.json
+
 # node.js
 #
 node_modules/
