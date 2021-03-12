@@ -33,6 +33,9 @@ const SignIn: React.FC = () => {
 
     const handleSignIn = useCallback(async (data: SignInFormData) => {
         try {
+            navigation.navigate('Home');
+            return;
+
             formRef.current?.setErrors({});
 
 
@@ -60,13 +63,10 @@ const SignIn: React.FC = () => {
 
                 navigation.navigate('Home');
             } catch (error) {
-                console.log(error.message);
                 showMessage({
                     message: 'Erro!',
                     description: error.message,
                     type: 'danger',
-                    // floating: true,
-                    // style: { marginTop: 25 },
                     titleStyle: { fontWeight: 'bold' },
                     icon: 'danger',
                 });
